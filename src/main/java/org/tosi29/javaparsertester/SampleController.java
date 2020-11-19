@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class SampleController {
+    private static final String byField = "/value/by/field";
+
     @RequestMapping("/simple/request")
     public String simpleRequestMappingAnnotation() {
         return "This is response.";
@@ -19,6 +21,11 @@ public class SampleController {
         return "This is post response.";
     }
 
+    @RequestMapping(value = "/normal/valueonly")
+    public String normalRequestMappingByValueOnly() {
+        return "";
+    }
+
     @RequestMapping(value = "/normal/get/value", method = RequestMethod.GET)
     public String normalRequestMappingByValue() {
         return "";
@@ -31,6 +38,11 @@ public class SampleController {
 
     @GetMapping(value = "/value/and/path", path = "/value/and/path")
     public String bothValueAndPath() {
+        return "";
+    }
+
+    @GetMapping(byField)
+    public String valueByFinalField() {
         return "";
     }
 
